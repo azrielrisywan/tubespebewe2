@@ -14,11 +14,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/produk', function () {
+        return view('produk');
+    })->name('produk');
+
+    Route::get('/karyawan', function () {
+        return view('karyawan');
+    })->name('karyawan');
+
+    Route::get('/transaksi', function () {
+        return view('transaksi');
+    })->name('transaksi');
+
+});
 
 require __DIR__.'/auth.php';

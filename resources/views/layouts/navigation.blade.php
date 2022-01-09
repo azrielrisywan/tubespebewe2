@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('produk')" :active="request()->routeIs('produk')">
+                        {{ __('Produk') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('karyawan')" :active="request()->routeIs('karyawan')">
+                        {{ __('Karyawan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('transaksi')" :active="request()->routeIs('transaksi')">
+                        {{ __('Transaksi') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -34,6 +43,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('register')">
+                            {{ __('Create Account') }}
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -66,6 +78,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('produk')" :active="request()->routeIs('produk')">
+                {{ __('Produk') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('karyawan')" :active="request()->routeIs('karyawan')">
+                {{ __('Karyawan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('transaksi')" :active="request()->routeIs('transaksi')">
+                {{ __('Transaksi') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -76,6 +97,9 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('register')">
+                    {{ __('Create Account') }}
+                </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
