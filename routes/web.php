@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
         return view('transaksi');
     })->name('transaksi');
 
-    Route::put('/produk', [ProdukController::class, 'tambah'])->name('tambah.produk');
+    Route::put('/produk', [ProdukController::class, 'store'])->name('tambah.produk');
+    Route::put('/karyawan', [KaryawanController::class, 'store'])->name('tambah.karyawan');
 
 });
 
