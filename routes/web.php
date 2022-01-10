@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;

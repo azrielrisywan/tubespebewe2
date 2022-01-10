@@ -20,7 +20,11 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $karyawans = \DB::table('karyawan')
+                        ->where('is_admin', '=', null)
+                        ->get()
+                        ->toArray();
+        return view('auth.register', compact('karyawans'));
     }
 
     /**
@@ -39,15 +43,29 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $get_id = \DB::table('karyawan')
+            ->select('id')
+            ->where('nama', '=', $request->name)
+            ->distinct()
+            ->get();
+        foreach ($get_id as $data) {
+            $karyawan_id = $data->id;
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'karyawan_id' => $karyawan_id
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        \DB::table('karyawan')
+            ->where('nama', '=', $request->name)
+            ->update(['is_admin' => '1']);
 
         return redirect(RouteServiceProvider::HOME);
     }
