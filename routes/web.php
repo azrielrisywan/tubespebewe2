@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/produk', [ProdukController::class, 'store'])->name('tambah.produk');
     Route::put('/karyawan', [KaryawanController::class, 'store'])->name('tambah.karyawan');
 
+    Route::get('/dashboard/{any}',[KaryawanController::class,'show'])->name('show.karyawan');
+
 });
 
 require __DIR__.'/auth.php';
