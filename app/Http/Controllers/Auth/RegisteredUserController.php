@@ -51,23 +51,22 @@ class RegisteredUserController extends Controller
         foreach ($get_id as $data) {
             $karyawan_id = $data->id;
         }
-        echo $karyawan_id;
 
-//        $user = User::create([
-//            'name' => $request->name,
-//            'email' => $request->email,
-//            'password' => Hash::make($request->password),
-//            'karyawan_id' => $karyawan_id
-//        ]);
-//
-//        event(new Registered($user));
-//
-//        Auth::login($user);
-//
-//        \DB::table('karyawan')
-//            ->where('nama', '=', $request->name)
-//            ->update(['is_admin' => '1']);
-//
-//        return redirect(RouteServiceProvider::HOME);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'karyawan_id' => $karyawan_id
+        ]);
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        \DB::table('karyawan')
+            ->where('nama', '=', $request->name)
+            ->update(['is_admin' => '1']);
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }
