@@ -11,11 +11,6 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-{{--            <!-- Id -->--}}
-{{--            <div>--}}
-{{--                <x-label for="id" :value="__('ID')"/>--}}
-{{--                <input id="id" class="form-control block mt-1 w-full" name="id" :value="@foreach($karyawans as $key => $data)">--}}
-{{--            </div>--}}
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />

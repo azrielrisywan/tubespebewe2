@@ -18,7 +18,7 @@ class ProdukController extends Controller
             'kategori'=> 'required',
             'pabrikan'=> 'required',
             'tanggalproduksi'=> 'required|date',
-            'tanggalkedaluwarsa'=> 'required|date|after_or_equal:tanggalproduksi',
+            'tanggalkedaluwarsa'=> 'nullable|date|after_or_equal:tanggalproduksi',
             'harga'=> 'required|int',
             'jumlahstok'=> 'required|int',
         ],[
@@ -27,7 +27,6 @@ class ProdukController extends Controller
             'pabrikan.required' => 'Pabrikan harus diisi!',
             'tanggalproduksi.required' => 'tanggal produksi harus diisi!',
             'tanggalproduksi.date' => 'Isian tanggal produksi harus berupa "date"',
-            'tanggalkedaluwarsa.required' => 'tanggal kedaluwarsa harus diisi!',
             'tanggalkedaluwarsa.date' => 'Isian tanggal kedaluwarsa harus berupa "date"',
             'tanggalkedaluwarsa.after_or_equal' => 'Isian tanggal kedaluwarsa harus tanggal sesudah/sama dengan tanggal produksi',
             'harga.required' => 'Harga harus diisi!',

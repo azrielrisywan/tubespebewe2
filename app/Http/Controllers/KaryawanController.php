@@ -39,12 +39,5 @@ class KaryawanController extends Controller
             Alert::error('Error', $e->getMessage());
             return back();
         }
-        function show()
-        {
-//            $data = Karyawan::all();
-//            return view('dashboard',['Karyawan' => $data]);
-            $karyawans = DB::table('karyawan')->select('nama', 'kontak', 'masa_kontrak')->get();
-            return view('/dashboard', compact('karyawans'));
-        }
     }
 }
