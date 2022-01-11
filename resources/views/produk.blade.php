@@ -16,7 +16,7 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="Nama">Nama Produk</label>
-                                <input type="text" class="form-control" id="Nama" name="nama" placeholder="Nama Produk" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="Nama" name="nama" placeholder="Nama Produk" value="{{ old('nama') }}">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="Kategori">Kategori</label>
@@ -33,11 +33,11 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="TanggalProduksi">Tanggal Produksi</label>
-                                <input type="date" class="form-control" id="TanggalProduksi" name="tanggalproduksi" value="{{ old('tanggalproduksi') }}">
+                                <input type="date" class="form-control" id="TanggalProduksi" name="tanggalproduksi" value="">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="TanggalKedaluwarsa">Tanggal Kedaluwarsa</label>
-                                <input type="date" class="form-control" id="TanggalKedaluwarsa" name="tanggalkedaluwarsa" value="{{ old('tanggalkedaluwarsa') }}">
+                                <input type="date" class="form-control" id="TanggalKedaluwarsa" name="tanggalkedaluwarsa" value="">
                             </div>
                         </div>
                         <div class="form-row">

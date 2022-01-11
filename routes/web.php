@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('/produk', [ProdukController::class, 'store'])->name('tambah.produk');
     Route::put('/karyawan', [KaryawanController::class, 'store'])->name('tambah.karyawan');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 });
 
