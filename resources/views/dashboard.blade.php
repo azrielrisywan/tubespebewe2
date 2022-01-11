@@ -1,9 +1,14 @@
+
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
+
         </h2>
     </x-slot>
+
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -18,6 +23,7 @@
                                 <th scope="col">Kontak</th>
                                 <th scope="col">Kontrak Habis</th>
                                 <th scope="col">Waktu Kerja</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -27,6 +33,7 @@
                                 <td>{{$karyawan->kontak}}</td>
                                 <td>{{$karyawan->masa_kontrak}}</td>
                                 <td>{{$karyawan->waktu_kerja}}</td>
+                                <td><a href="#" >Edit</a></td> | <a href="#" >Hapus</a></td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -54,6 +61,7 @@
                                 <th scope="col">Kadaluarsa</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Stok</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -67,6 +75,7 @@
                                     <td>{{$produk->tanggal_kedaluwarsa}}</td>
                                     <td>{{$produk->harga}}</td>
                                     <td>{{$produk->jumlah_stok}}</td>
+                                    <td><a href="#" >Edit</a></td> | <a href="#" >Hapus</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -90,6 +99,7 @@
                                 <th scope="col">Tanggal Order</th>
                                 <th scope="col">Metode Pembayaran</th>
                                 <th scope="col">Total Bayar</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
