@@ -46,5 +46,7 @@ class KaryawanController extends Controller
             $karyawans = DB::table('karyawan')->select('nama', 'kontak', 'masa_kontrak')->get();
             return view('/dashboard', compact('karyawans'));
         }
+
     }
 }
+

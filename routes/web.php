@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/editKaryawan', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
+
 });
 
 require __DIR__.'/auth.php';

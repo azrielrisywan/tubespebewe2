@@ -26,5 +26,24 @@ class DashboardController extends Controller
             Alert::error('Error', $e->getMessage());
             return back();
         }
+
     }
-}
+    function editKaryawan()
+    {
+        try {
+            $karyawans = DB::table('karyawan')
+                ->select('karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja')
+                ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
+                ->get()
+                ->toArray();
+            return view('editKaryawan', compact('karyawans'));
+        } catch (Exception $e) {
+            Alert::error('Error', $e->getMessage());
+            return back();
+        }
+
+    }
+
+    }
+
+

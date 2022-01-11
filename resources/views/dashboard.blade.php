@@ -33,7 +33,7 @@
                                 <td>{{$karyawan->kontak}}</td>
                                 <td>{{$karyawan->masa_kontrak}}</td>
                                 <td>{{$karyawan->waktu_kerja}}</td>
-                                <td><a href="#" >Edit</a>  | <a href="#" >Hapus</a></td>
+                                <td><a href="{{ url('editKaryawan') }}" >Edit</a>  | <a href="#" >Hapus</a></td>
                             </tr>
                             @endforeach
                             </tbody>
