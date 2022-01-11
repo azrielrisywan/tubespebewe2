@@ -33,7 +33,7 @@
                                 <td>{{$karyawan->kontak}}</td>
                                 <td>{{$karyawan->masa_kontrak}}</td>
                                 <td>{{$karyawan->waktu_kerja}}</td>
-                                <td><a href="#" >Edit</a></td> | <a href="#" >Hapus</a></td>
+                                <td><a href="#" >Edit</a>  | <a href="#" >Hapus</a></td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -75,7 +75,7 @@
                                     <td>{{$produk->tanggal_kedaluwarsa}}</td>
                                     <td>{{$produk->harga}}</td>
                                     <td>{{$produk->jumlah_stok}}</td>
-                                    <td><a href="#" >Edit</a></td> | <a href="#" >Hapus</a></td>
+                                    <td><a href="#" >Edit</a>  | <a href="#" >Hapus</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
