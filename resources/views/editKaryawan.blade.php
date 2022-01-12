@@ -12,7 +12,7 @@
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                                <input type="text" class="form-control" value="{{$karyawans->nama}}" id="nama" name="nama" placeholder="Nama">
                             </div>
                         </div>
                         <div class="form-row">
@@ -35,7 +35,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">Tambah Data</button>
+                        <button class="btn btn-primary" type="submit">Edit Data</button>
                     </form>
                 </div>
             </div>
