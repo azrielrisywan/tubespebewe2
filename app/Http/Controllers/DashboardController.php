@@ -31,12 +31,14 @@ class DashboardController extends Controller
     }
     function editKaryawan($id)
     {
+        echo $id;
         try {
             $karyawan_id = DB::table('karyawan')
-                ->select('id')
+                ->select('nama')
                 ->where('id', '=', $id)
-                ->get();
-
+                ->get()
+                ->toArray();
+            
 
             $karyawans = DB::table('karyawan')
                 ->select('karyawan.id', 'karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja')
@@ -44,6 +46,10 @@ class DashboardController extends Controller
                 ->get()
                 ->toArray();
             return view('editKaryawan', compact('karyawans', 'karyawan_id'));
+            
+
+
+            
 
 
         } catch (Exception $e) {

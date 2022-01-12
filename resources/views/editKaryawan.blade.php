@@ -12,7 +12,9 @@
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" value="{{$karyawans->nama}}" id="nama" name="nama" placeholder="Nama">
+                                @foreach($karyawan_id as $karyawan)
+                                <input type="text" class="form-control" value="{{ $karyawan -> nama }}" id="nama" name="nama" placeholder="Nama">
+                                @endforeach
                             </div>
                         </div>
                         <div class="form-row">
