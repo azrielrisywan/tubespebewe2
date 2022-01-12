@@ -12,7 +12,7 @@
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="nama">Nama</label>
-                                @foreach($karyawan_id as $karyawan)
+                                @foreach($karyawans as $karyawan)
                                 <input type="text" class="form-control" value="{{ $karyawan -> nama }}" id="nama" name="nama" placeholder="Nama">
                                 @endforeach
                             </div>
@@ -20,21 +20,27 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="noHP">No. HP</label>
-                                <input type="tel" class="form-control" id="noHP" name="noHP" placeholder="No. HP">
+                                @foreach($karyawans as $karyawan)
+                                <input type="tel" class="form-control" value="{{ $karyawan -> kontak }}" id="noHP" name="noHP" placeholder="No. HP">
+                                @endforeach
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="masaKontrak">Masa Kontrak Habis</label>
-                                <input type="date" class="form-control" id="masaKontrak" name="masaKontrak">
+                                @foreach($karyawans as $karyawan)
+                                <input type="date" class="form-control" value="{{ $karyawan -> masa_kontrak }}" id="masaKontrak" name="masaKontrak">
+                                @endforeach
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="shift">Shift</label>
+                                @foreach($karyawans as $karyawan)
                                 <select class="custom-select" id="shift" name="shift">
-                                    <option selected>Choose...</option>
+                                    <option selected>{{ $karyawan -> waktu_kerja }}</option>
                                     <option value="1">Malam Weekday</option>
                                     <option value="2">Siang Weekday</option>
                                     <option value="3">Malam Weekend</option>
                                     <option value="3">Siang Weekend</option>
                                 </select>
+                            @endforeach
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Edit Data</button>

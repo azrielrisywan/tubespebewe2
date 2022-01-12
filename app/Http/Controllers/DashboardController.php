@@ -38,20 +38,15 @@ class DashboardController extends Controller
                 ->where('id', '=', $id)
                 ->get()
                 ->toArray();
-            
 
-            $karyawans = DB::table('karyawan')
+                $karyawans = DB::table('karyawan')
                 ->select('karyawan.id', 'karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja')
                 ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
+                ->where('karyawan.id', '=', $id)
                 ->get()
                 ->toArray();
-            return view('editKaryawan', compact('karyawans', 'karyawan_id'));
+                return view('editKaryawan', compact('karyawans', 'karyawan_id'));
             
-
-
-            
-
-
         } catch (Exception $e) {
             Alert::error('Error', $e->getMessage());
             return back();
