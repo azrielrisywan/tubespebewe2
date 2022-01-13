@@ -9,6 +9,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-validation-errors class="mb-4" :errors="$errors" />
+                    @foreach($karyawans as $karyawan)
+                    <form action="{{ route('updatedata',$karyawan->id)  }}" method="POST" >
+                    @endforeach
+                    @csrf
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="nama">Nama</label>
@@ -34,11 +38,10 @@
                                 <label for="shift">Shift</label>
                                 @foreach($karyawans as $karyawan)
                                 <select class="custom-select" id="shift" name="shift">
-                                    <option selected>{{ $karyawan -> waktu_kerja }}</option>
-                                    <option value="1">Malam Weekday</option>
-                                    <option value="2">Siang Weekday</option>
-                                    <option value="3">Malam Weekend</option>
-                                    <option value="3">Siang Weekend</option>
+                                    <option selected>Choose</option>
+                                    <option value="1">Pagi</option>
+                                    <option value="2">Siang</option>
+                                    <option value="3">Malam</option>
                                 </select>
                             @endforeach
                             </div>
@@ -61,7 +64,7 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Kontak</th>
                                 <th scope="col">Kontrak Habis</th>
-                                <th scope="col">Waktu Kerja</th>
+                                <th scope="col">Shift</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -71,7 +74,13 @@
                                     <td>{{$karyawan->nama}}</td>
                                     <td>{{$karyawan->kontak}}</td>
                                     <td>{{$karyawan->masa_kontrak}}</td>
-                                    <td>{{$karyawan->waktu_kerja}}</td>
+                                    @if ($karyawan->shift_id == 1)
+                                        <td>Pagi</td>
+                                    @elseif($karyawan->shift_id == 2)
+                                        <td>Siang</td>
+                                    @elseif($karyawan->shift_id == 3)
+                                        <td>Malam</td>                                             
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'Apotek Maju Terus') }}</title>
 
-        @livewireStyles
+        {{-- @livewireStyles --}}
 
         {{-- Icon --}}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

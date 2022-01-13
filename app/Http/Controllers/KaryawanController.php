@@ -39,9 +39,6 @@ class KaryawanController extends Controller
             Alert::error('Error', $e->getMessage());
             return back();
         }
-        function updateData(Request $req,$id){
-            echo $id;
-        }
         function show()
         {
 //            $data = Karyawan::all();

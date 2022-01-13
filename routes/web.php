@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
+use App\Models\Karyawan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,10 +43,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
+    
     // 
-    // Route::get('/editKaryawan/{id}', [KaryawanController::class, 'updateData'])->name('editKaryawan.updateData');
+    Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
+    Route::post('/updateKaryawan/{id}', [DashboardController::class, 'updatedata'])->name('updatedata');
 
+    //
 
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 
