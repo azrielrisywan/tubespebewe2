@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
@@ -61,6 +62,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/transaksi/editQuantity', [CartController::class, 'editQuantity'])->name('cart.editquantity');
 
     Route::get('/transaksi/cartList', [CartController::class, 'cartList'])->name('cart.list');
+
+    Route::get('/transaksi/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+    Route::post('/transaksi/checkout/remove', [CheckoutController::class, 'remove'])->name('checkout.removeitem');
+
+    Route::post('/transaksi/checkout/editQuantity', [CheckoutController::class, 'editQuantity'])->name('checkout.editquantity');
 
 });
 
