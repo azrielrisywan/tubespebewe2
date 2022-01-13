@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Request;
 
 class TransaksiController extends Controller
 {

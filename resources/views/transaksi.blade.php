@@ -41,6 +41,21 @@
                                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
                                                 <button type="submit" class="mt-1 btn btn-outline-warning btn-sm">Remove Item</button>
                                             </form>
+                                            <form method="post" action="{{ route('cart.editquantity') }}">
+                                                @csrf
+                                                <input type="hidden" name="produk_id" value="{{ $produk->id }}">
+                                                @php
+                                                $cartArray = $cart->toArray();
+                                                $itemqty = 0;
+                                                foreach ($cartArray as $data) {
+                                                    if ($data['id'] == $produk->id) {
+                                                        $itemqty = $data['qty'];
+                                                    }
+                                                }
+                                                @endphp
+                                                <input type="number" class="form-control-sm mt-1" name="quantity" value="{{ $itemqty }}">
+                                                <button type="submit" class="mt-1 btn btn-outline-secondary btn-sm">Edit Quantity</button>
+                                            </form>
                                         @else
                                             <form method="post" action="{{ route('cart.store') }}">
                                                 @csrf

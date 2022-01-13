@@ -56,4 +56,15 @@ class CartController extends Controller
         toast($nama_produk . ' dihapus dari cart!', 'success');
         return redirect()->route('transaksi');
     }
+
+    public function editQuantity(Request $request) {
+        $cart = Cart::content()->toArray();
+        foreach ($cart as $data) {
+            if ($data['id'] == $request->produk_id) {
+                Cart::update($data['rowId'], $request->quantity);
+            }
+        }
+        toast('Berhasil diedit!', 'success');
+        return redirect()->route('transaksi');
+    }
 }

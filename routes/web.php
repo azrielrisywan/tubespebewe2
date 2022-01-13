@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/transaksi/remove', [CartController::class, 'remove'])->name('cart.removeitem');
 
+    Route::post('/transaksi/editQuantity', [CartController::class, 'editQuantity'])->name('cart.editquantity');
+
     Route::get('/transaksi/cartList', [CartController::class, 'cartList'])->name('cart.list');
 
 });
