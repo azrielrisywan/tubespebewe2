@@ -28,7 +28,7 @@
                                 <td>{{$karyawan->kontak}}</td>
                                 <td>{{$karyawan->masa_kontrak}}</td>
                                 <td>{{$karyawan->waktu_kerja}}</td>
-                                <td><a href="{{ url('/editKaryawan/'.$karyawan->id) }}" >Edit</a>  | <a href="#" >Hapus</a></td>
+                                <td><a href="{{ url('/editKaryawan/'.$karyawan->id) }}" >Edit</a>  | <a href="{{ url('/hapusKaryawan/'.$karyawan->id) }}" >Hapus</a></td>
                             </tr>
                             @endforeach
                             </tbody>

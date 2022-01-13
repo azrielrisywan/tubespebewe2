@@ -87,6 +87,17 @@ class DashboardController extends Controller
         toast('Data berhasil diedit!', 'success');
         return redirect()->route('dashboard', compact('update_nama', 'update_masa_kontrak', 'update_kontak'));
     }
+
+    public function hapusKaryawan($id) {
+        try {
+            DB::table('karyawan')->where('id', '=', $id)->delete();
+            toast('Data berhasil dihapus', 'success');
+        } catch (Exception $e) {
+            Alert::error('Error', $e->getMessage());
+            return back();
+        }
+        return redirect()->route('dashboard');
+    }
 }
 
 
