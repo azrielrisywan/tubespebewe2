@@ -48,8 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
     //
     Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
     Route::post('/updateKaryawan/{id}', [DashboardController::class, 'updatedata'])->name('updatedata');
-
     //
+
 
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 

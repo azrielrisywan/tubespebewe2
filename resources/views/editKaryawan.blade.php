@@ -8,42 +8,47 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <x-validation-errors class="mb-4" :errors="$errors" />
-                    @foreach($karyawans as $karyawan)
-                    <form action="{{ route('updatedata',$karyawan->id)  }}" method="POST" >
-                    @endforeach
-                    @csrf
+                    @php
+                        $id = 0;
+                        $nama = '';
+                        $noHp = '';
+                        $masaKontrak = '';
+                        $shift = '';
+                        foreach ($nama_karyawan as $data) {
+                            $nama = $data->nama;
+                        }
+                        foreach ($karyawans as $karyawan) {
+                            $id = $karyawan->id;
+                            $noHp = $karyawan->kontak;
+                            $masaKontrak = $karyawan->masa_kontrak;
+                            $shift = $karyawan->waktu_kerja;
+                        }
+                    @endphp
+                    <form method="post" action="{{ url('/updateKaryawan/'.$id) }}">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="nama">Nama</label>
-                                @foreach($karyawans as $karyawan)
-                                <input type="text" class="form-control" value="{{ $karyawan -> nama }}" id="nama" name="nama" placeholder="Nama">
-                                @endforeach
+                                <input type="text" class="form-control" id="nama" name="nama" value="{{ $nama }}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="noHP">No. HP</label>
-                                @foreach($karyawans as $karyawan)
-                                <input type="tel" class="form-control" value="{{ $karyawan -> kontak }}" id="noHP" name="noHP" placeholder="No. HP">
-                                @endforeach
+                                <input type="tel" class="form-control" id="noHP" name="noHP" placeholder="No. HP" value="{{ $noHp }}">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="masaKontrak">Masa Kontrak Habis</label>
-                                @foreach($karyawans as $karyawan)
-                                <input type="date" class="form-control" value="{{ $karyawan -> masa_kontrak }}" id="masaKontrak" name="masaKontrak">
-                                @endforeach
+                                <input type="date" class="form-control" id="masaKontrak" name="masaKontrak" value="{{ $masaKontrak }}">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="shift">Shift</label>
-                                @foreach($karyawans as $karyawan)
                                 <select class="custom-select" id="shift" name="shift">
-                                    <option selected>Choose</option>
-                                    <option value="1">Pagi</option>
-                                    <option value="2">Siang</option>
-                                    <option value="3">Malam</option>
+                                    <option value="1">Malam Weekday</option>
+                                    <option value="2">Siang Weekday</option>
+                                    <option value="3">Malam Weekend</option>
+                                    <option value="3">Siang Weekend</option>
                                 </select>
-                            @endforeach
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Edit Data</button>
@@ -74,13 +79,7 @@
                                     <td>{{$karyawan->nama}}</td>
                                     <td>{{$karyawan->kontak}}</td>
                                     <td>{{$karyawan->masa_kontrak}}</td>
-                                    @if ($karyawan->shift_id == 1)
-                                        <td>Pagi</td>
-                                    @elseif($karyawan->shift_id == 2)
-                                        <td>Siang</td>
-                                    @elseif($karyawan->shift_id == 3)
-                                        <td>Malam</td>                                             
-                                    @endif
+                                    <td>{{$karyawan->waktu_kerja}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

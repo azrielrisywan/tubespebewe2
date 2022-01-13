@@ -34,30 +34,30 @@ class DashboardController extends Controller
     function editKaryawan($id)
     {
         try {
-            $karyawan_id = DB::table('karyawan')
+            $nama_karyawan = DB::table('karyawan')
                 ->select('nama')
                 ->where('id', '=', $id)
                 ->get()
                 ->toArray();
 
-                $karyawans = DB::table('karyawan')
+            $karyawans = DB::table('karyawan')
                 ->select('karyawan.id', 'karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja','shift_id')
                 ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
                 ->where('karyawan.id', '=', $id)
                 ->get()
                 ->toArray();
-                return view('editKaryawan', compact('karyawans', 'karyawan_id'));
-            
+
+
+                return view('editKaryawan', compact('karyawans', 'nama_karyawan'));
+
         } catch (Exception $e) {
             Alert::error('Error', $e->getMessage());
             return back();
         }
     }
-    function updatedata(Request $req,$id){
+    function updatedata(Request $req, $id){
         $nama = $req->input('nama');
-        echo $nama;
         $kontak = $req->input('noHP');
-        var_dump($kontak);
         $masa_kontrak = $req->input('masaKontrak');
         $waktu_kerja = $req->input('shift');
         $update_nama = DB::table('karyawan')
@@ -84,7 +84,8 @@ class DashboardController extends Controller
         ->update(
                 ['shift_id' => $waktu_kerja]
             );
-        return back();
+        toast('Data berhasil diedit!', 'success');
+        return redirect()->route('dashboard', compact('update_nama', 'update_masa_kontrak', 'update_kontak'));
     }
 }
 
