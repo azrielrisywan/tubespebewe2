@@ -16,15 +16,22 @@ class DashboardController extends Controller
             $karyawans = DB::table('karyawan')
                 ->select('karyawan.id', 'karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja', 'shift_id')
                 ->join('shift','karyawan.shift_id', '=','shift.id')
-                ->get()
-                ->toArray();
+                ->paginate(5);
+
 
             $produks = DB::table('produks')
                 ->select('id', 'nama', 'kategori', 'pabrikan', 'tanggal_produksi', 'tanggal_kedaluwarsa', 'harga', 'jumlah_stok')
-                ->get()
-                ->toArray();
+                ->paginate(5);
 
-            return view('dashboard', compact('karyawans', 'produks'));
+            $transaksi = DB::table('orders')
+                ->select('orders.id', 'orders.tanggal_order', 'orders.metode_pembayaran', 'produks.nama', 'orderdetails.jumlah')
+                ->join('orderdetails', 'orderdetails.id', '=', 'orders.id')
+                ->join('produks', 'produks.id', '=', 'orderdetails.produk_id')
+                ->orderBy('orders.id', 'desc')
+                ->paginate(5);
+
+
+            return view('dashboard', compact('karyawans', 'produks', 'transaksi'));
         } catch (Exception $e) {
             Alert::error('Error', $e->getMessage());
             return back();

@@ -89,36 +89,24 @@
                         <table class="table table-hover">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Id</th>
+                                <th scope="col-md-1">Id</th>
                                 <th scope="col">Tanggal Order</th>
                                 <th scope="col">Metode Pembayaran</th>
-                                <th scope="col">Total Bayar</th>
-                                <th scope="col"></th>
+                                <th scope="col">Nama Produk</th>
+                                <th scope="col">Jumlah</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>*Id</td>
-                                <td>*Tanggal Order</td>
-                                <td>*Metode Pembayaran</td>
-                                <td>@*Total Bayar</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>*Id1</td>
-                                <td>*Tanggal Order1</td>
-                                <td>*Metode Pembayaran1</td>
-                                <td>@*Total Bayar1</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>*Id2</td>
-                                <td>*Tanggal Order2</td>
-                                <td>*Metode Pembayaran2</td>
-                                <td>@*Total Bayar2</td>
-                            </tr>
+                            @foreach($transaksi as $data)
+                                <tr>
+                                    <td>{{ $data->id }}</td>
+                                    <td>{{ $data->tanggal_order }}</td>
+                                    <td>{{ $data->metode_pembayaran }}</td>
+                                    <td>{{ $data->nama }}</td>
+                                    <td>{{ $data->jumlah }}</td>
+                                </tr>
+                            @endforeach
+                            {{ $transaksi->links() }}
                             </tbody>
                         </table>
                     </div>
