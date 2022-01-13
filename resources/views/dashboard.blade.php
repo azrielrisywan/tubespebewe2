@@ -105,8 +105,9 @@
                                     <td>{{ $data->nama }}</td>
                                     <td>{{ $data->jumlah }}</td>
                                 </tr>
+
                             @endforeach
-                            {{ $transaksi->links() }}
+                            {{ $transaksi->onEachSide(5)->links() }}
                             </tbody>
                         </table>
                     </div>

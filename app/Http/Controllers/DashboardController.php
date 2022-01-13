@@ -16,12 +16,14 @@ class DashboardController extends Controller
             $karyawans = DB::table('karyawan')
                 ->select('karyawan.id', 'karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja', 'shift_id')
                 ->join('shift','karyawan.shift_id', '=','shift.id')
-                ->paginate(5);
+                ->get()
+                ->toArray();
 
 
             $produks = DB::table('produks')
                 ->select('id', 'nama', 'kategori', 'pabrikan', 'tanggal_produksi', 'tanggal_kedaluwarsa', 'harga', 'jumlah_stok')
-                ->paginate(5);
+                ->get()
+                ->toArray();
 
             $transaksi = DB::table('orders')
                 ->select('orders.id', 'orders.tanggal_order', 'orders.metode_pembayaran', 'produks.nama', 'orderdetails.jumlah')
