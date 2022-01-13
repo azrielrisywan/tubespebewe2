@@ -43,30 +43,30 @@ class DashboardController extends Controller
     function editKaryawan($id)
     {
         try {
-            $nama_karyawan = DB::table('karyawan')
+            $karyawan_id = DB::table('karyawan')
                 ->select('nama')
                 ->where('id', '=', $id)
                 ->get()
                 ->toArray();
 
-            $karyawans = DB::table('karyawan')
+                $karyawans = DB::table('karyawan')
                 ->select('karyawan.id', 'karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja','shift_id')
                 ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
                 ->where('karyawan.id', '=', $id)
                 ->get()
                 ->toArray();
-
-
-                return view('editKaryawan', compact('karyawans', 'nama_karyawan'));
+                return view('editKaryawan', compact('karyawans', 'karyawan_id'));
 
         } catch (Exception $e) {
             Alert::error('Error', $e->getMessage());
             return back();
         }
     }
-    function updatedata(Request $req, $id){
+    function updatedata(Request $req,$id){
         $nama = $req->input('nama');
+        echo $nama;
         $kontak = $req->input('noHP');
+        var_dump($kontak);
         $masa_kontrak = $req->input('masaKontrak');
         $waktu_kerja = $req->input('shift');
         $update_nama = DB::table('karyawan')
@@ -93,8 +93,7 @@ class DashboardController extends Controller
         ->update(
                 ['shift_id' => $waktu_kerja]
             );
-        toast('Data berhasil diedit!', 'success');
-        return redirect()->route('dashboard', compact('update_nama', 'update_masa_kontrak', 'update_kontak'));
+        return back();
     }
 
     public function hapusKaryawan($id) {
@@ -107,7 +106,7 @@ class DashboardController extends Controller
         }
         return redirect()->route('dashboard');
     }
-    
+
     function editObat($id)
     {
         try {
@@ -123,7 +122,7 @@ class DashboardController extends Controller
                 ->get()
                 ->toArray();
                 return view('editObat', compact('obats', 'obat_id'));
-            
+
         } catch (Exception $e) {
             Alert::error('Error', $e->getMessage());
             return back();
@@ -173,8 +172,8 @@ class DashboardController extends Controller
         ->where('produks.id',$id)
         ->update(
                 ['produks.tanggal_kedaluwarsa' => "$tanggal_kedaluwarsa"],
-            );   
-        toast('Data Updated Succeed!','success');     
+            );
+        toast('Data Updated Succeed!','success');
         return back();
     }
     public function hapusObat($id) {
@@ -188,7 +187,7 @@ class DashboardController extends Controller
             return back();
         }
         return redirect()->route('dashboard');
-    } 
+    }
 }
 
 
