@@ -7,6 +7,11 @@
 
         <title>{{ config('app.name', 'Apotek Maju Terus') }}</title>
 
+        @livewireStyles
+
+        {{-- Icon --}}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -34,5 +39,6 @@
             </main>
         </div>
         @include('sweetalert::alert')
+    @livewireScripts
     </body>
 </html>

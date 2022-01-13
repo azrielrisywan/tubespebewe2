@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index() {
         try {
             $karyawans = DB::table('karyawan')
-                ->select('karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja')
+                ->select('karyawan.nama', 'karyawan.kontak', 'karyawan.masa_kontrak', 'shift.waktu_kerja', 'karyawan.role')
                 ->join('shift','karyawan.shift_id', '=','shift.id')
                 ->get()
                 ->toArray();
