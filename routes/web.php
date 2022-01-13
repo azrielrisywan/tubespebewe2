@@ -42,7 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/editKaryawan', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
+    Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
+
 
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 
