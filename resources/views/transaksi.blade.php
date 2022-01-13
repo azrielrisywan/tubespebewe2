@@ -12,12 +12,9 @@
                     <div class="d-flex p-2 flex-row-reverse px-2 mb-4 py-2 sm:rounded-lg bg-gray-100 overflow-hidden shadow-sm">
                         <form method="post" action="{{ route('cart.destroy') }}">
                             @csrf
-                            <button type="submit" class="form-control mt-2 ml-2 btn btn-outline-danger btn-sm">Remove Cart</button>
+                            <button type="submit" class="form-control mt-2 ml-2 btn btn-danger btn-sm">Remove Cart</button>
                         </form>
-                        <form method="post" action="{{ route('cart.list') }}">
-                            @csrf
-                            <button type="submit" class="form-control mt-2 btn btn-warning btn-sm">Show Cart</button>
-                        </form>
+                        <a href="#"><button type="submit" class="form-control mt-2 btn btn-info btn-sm">Show Cart</button></a>
                         <p class="mt-3 mx-2">Cart ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</p>
                         <i class="material-icons mt-3">add_shopping_cart</i>
                     </div>
@@ -42,7 +39,7 @@
                                             <form method="post" action="{{ route('cart.removeitem') }}">
                                                 @csrf
                                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
-                                                <button type="submit" class="mt-3 btn btn-outline-warning btn-sm">Remove Item</button>
+                                                <button type="submit" class="mt-1 btn btn-outline-warning btn-sm">Remove Item</button>
                                             </form>
                                         @else
                                             <form method="post" action="{{ route('cart.store') }}">
@@ -50,7 +47,7 @@
                                                 <input type="hidden" name="nama_produk" value="{{ $produk->nama }}">
                                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
                                                 <input type="number" name="quantity" value="{{ old('quantity') }}" class="form-control-sm">
-                                                <button type="submit" class="mt-3 btn btn-outline-primary btn-sm">Add to cart</button>
+                                                <button type="submit" class="form-control mt-3 btn btn-outline-primary btn-sm">Add to cart</button>
                                             </form>
                                         @endif
                                     </td>
