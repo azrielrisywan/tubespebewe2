@@ -44,12 +44,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    
-    // 
-    Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
-    Route::post('/updateKaryawan/{id}', [DashboardController::class, 'updatedata'])->name('updatedata');
 
     //
+    Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
+    Route::get('/hapusKaryawan/{id}', [DashboardController::class, 'hapusKaryawan'])->name('hapusKaryawan');
+    Route::post('/updateKaryawan/{id}', [DashboardController::class, 'updatedata'])->name('updatedata');
+    //
+
 
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 
@@ -68,6 +69,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/transaksi/checkout/remove', [CheckoutController::class, 'remove'])->name('checkout.removeitem');
 
     Route::post('/transaksi/checkout/editQuantity', [CheckoutController::class, 'editQuantity'])->name('checkout.editquantity');
+
+    Route::post('/transaksi/checkout/bayar', [CheckoutController::class, 'bayar'])->name('checkout.bayar');
+
+    Route::get('/transaksi/checkout/orderdetails', [CheckoutController::class, 'orderdetails'])->name('checkout.orderdetails');
 
 });
 

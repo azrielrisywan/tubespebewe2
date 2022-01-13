@@ -14,6 +14,10 @@ class CartController extends Controller
         $produk = Produk::findOrFail($request->produk_id);
 
         try {
+            if ($request->quantity <= 0) {
+                Alert::error('Error', 'Masukkan jumlah yang benar');
+                return back();
+            }
             Cart::add(
                 $produk->id,
                 $produk->nama,
