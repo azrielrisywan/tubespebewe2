@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class DashboardController extends Controller
 {
@@ -31,7 +33,6 @@ class DashboardController extends Controller
     }
     function editKaryawan($id)
     {
-        echo $id;
         try {
             $karyawan_id = DB::table('karyawan')
                 ->select('nama')
@@ -51,8 +52,9 @@ class DashboardController extends Controller
             Alert::error('Error', $e->getMessage());
             return back();
         }
-
-
+    }
+    function updateData(Request $req, $id){
+        $data = Karyawan::find($id);
     }
 
     }
