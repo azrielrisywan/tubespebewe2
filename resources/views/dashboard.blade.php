@@ -70,7 +70,7 @@
                                     <td>{{$produk->tanggal_kedaluwarsa}}</td>
                                     <td>{{$produk->harga}}</td>
                                     <td>{{$produk->jumlah_stok}}</td>
-                                    <td><a href="#" >Edit</a>  | <a href="#" >Hapus</a></td>
+                                    <td><a href="{{ url('/editObat/'.$produk->id) }}" >Edit</a>  | <a href="#" >Hapus</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
