@@ -107,6 +107,88 @@ class DashboardController extends Controller
         }
         return redirect()->route('dashboard');
     }
+    
+    function editObat($id)
+    {
+        try {
+                $obat_id = DB::table('produks')
+                ->select('nama')
+                ->where('id', '=', $id)
+                ->get()
+                ->toArray();
+
+                $obats = DB::table('produks')
+                ->select('id','nama','kategori','pabrikan','tanggal_produksi','tanggal_kedaluwarsa','harga','jumlah_stok')
+                ->where('id', '=', $id)
+                ->get()
+                ->toArray();
+                return view('editObat', compact('obats', 'obat_id'));
+            
+        } catch (Exception $e) {
+            Alert::error('Error', $e->getMessage());
+            return back();
+        }
+    }
+    function updatedataObat(Request $req,$id){
+        $nama = $req->input('nama');
+        $harga = $req->input('harga');
+        $pabrikan = $req->input('pabrikan');
+        $jumlah_stok = $req->input('jumlah_stok');
+        $category = $req->input('category');
+        $tanggal = $req->input('tanggal');
+        $pabrikan = $req->input('pabrikan');
+        $tanggal_kedaluwarsa = $req->input('tanggal_kedaluwarsa');
+
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.nama' => "$nama"],
+            );
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.harga' => "$harga"],
+            );
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.pabrikan' => "$pabrikan"],
+            );
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.jumlah_stok' => "$jumlah_stok"],
+            );
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.kategori' => "$category"],
+            );
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.tanggal_produksi' => "$tanggal"],
+            );
+        DB::table('produks')
+        ->where('produks.id',$id)
+        ->update(
+                ['produks.tanggal_kedaluwarsa' => "$tanggal_kedaluwarsa"],
+            );   
+        toast('Data Updated Succeed!','success');     
+        return back();
+    }
+    public function hapusObat($id) {
+        try {
+            DB::select('SET FOREIGN_KEY_CHECKS = 0');
+            DB::table('produks')->where('id', '=', $id)->delete();
+            DB::select('SET FOREIGN_KEY_CHECKS = 1');
+            toast('Data berhasil dihapus', 'success');
+        } catch (Exception $e) {
+            Alert::error('Error', $e->getMessage());
+            return back();
+        }
+        return redirect()->route('dashboard');
+    } 
 }
 
 

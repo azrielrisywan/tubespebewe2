@@ -50,6 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/hapusKaryawan/{id}', [DashboardController::class, 'hapusKaryawan'])->name('hapusKaryawan');
     Route::post('/updateKaryawan/{id}', [DashboardController::class, 'updatedata'])->name('updatedata');
     //
+    Route::get('/editObat/{id}', [DashboardController::class, 'editObat'])->name('editObat');
+    Route::get('/hapusObat/{id}', [DashboardController::class, 'hapusObat'])->name('hapusObat');
+    Route::post('/updateObat/{id}', [DashboardController::class, 'updatedataObat'])->name('updatedataObat');
+    //
 
 
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
