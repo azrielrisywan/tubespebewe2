@@ -65,7 +65,7 @@ class RegisteredUserController extends Controller
 
         \DB::table('karyawan')
             ->where('nama', '=', $request->name)
-            ->update(['is_admin' => '1']);
+            ->update(['is_admin' => 'admin']);
 
         return redirect(RouteServiceProvider::HOME);
     }

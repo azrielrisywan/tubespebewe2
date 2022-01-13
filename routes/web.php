@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
         return view('karyawan');
     })->name('karyawan');
 
-    Route::get('/transaksi', function () {
-        return view('transaksi');
-    })->name('transaksi');
-
     Route::put('/produk', [ProdukController::class, 'store'])->name('tambah.produk');
     Route::put('/karyawan', [KaryawanController::class, 'store'])->name('tambah.karyawan');
 
@@ -48,6 +46,18 @@ Route::group(['middleware' => 'auth'], function () {
     // 
     // Route::get('/editKaryawan/{id}', [KaryawanController::class, 'updateData'])->name('editKaryawan.updateData');
 
+
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+
+    Route::post('/transaksi', [CartController::class, 'store'])->name('cart.store');
+
+    Route::post('/transaksi/destroy', [CartController::class, 'destroy'])->name('cart.destroy');
+
+    Route::post('/transaksi/remove', [CartController::class, 'remove'])->name('cart.removeitem');
+
+    Route::post('/transaksi/editQuantity', [CartController::class, 'editQuantity'])->name('cart.editquantity');
+
+    Route::get('/transaksi/cartList', [CartController::class, 'cartList'])->name('cart.list');
 
 });
 
