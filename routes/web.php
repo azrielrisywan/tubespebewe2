@@ -64,6 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/transaksi/checkout/editQuantity', [CheckoutController::class, 'editQuantity'])->name('checkout.editquantity');
 
+    Route::post('/transaksi/checkout/bayar', [CheckoutController::class, 'bayar'])->name('checkout.bayar');
+
+    Route::get('/transaksi/checkout/orderdetails', [CheckoutController::class, 'orderdetails'])->name('transaksi.orderdetails');
+
 });
 
 require __DIR__.'/auth.php';

@@ -14,9 +14,9 @@
                         Cart Kosong
                     @else
                     <div class="table table-responsive">
-                        <a href="{{ route('transaksi') }}" ><button class="form-control col-md-1 btn btn-light">Back</button></a>
+                        <a href="{{ route('transaksi') }}" ><button class="form-control col-md-2 btn btn-dark">Back to Transaksi</button></a>
                         <table class="mt-4 table table-hover">
-                            <thead class="thead-dark">
+                            <thead class="thead-light">
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Nama</th>
@@ -50,7 +50,7 @@
                                                 }
                                             @endphp
                                             <input type="hidden" name="produk_id" value="{{ $produk_id }}">
-                                            <button type="submit" class="form-control col-md-12 mt-1 btn btn-outline-warning btn-sm">Remove Item</button>
+                                            <button type="submit" class="form-control col-md-12 mt-1 btn btn-warning btn-sm">Remove Item</button>
                                         </form>
                                         <form method="post" action="{{ route('checkout.editquantity') }}">
                                             @csrf
@@ -63,7 +63,14 @@
                             @endforeach
                             <tr>
                                 <th colspan="4">Total</th>
-                                <th colspan="4">{{ \Gloudemans\Shoppingcart\Facades\Cart::priceTotal() }}</th>
+                                <th colspan="">{{ \Gloudemans\Shoppingcart\Facades\Cart::priceTotal() }}</th>
+                            </tr>
+                            <tr>
+                                <th colspan="4"></th>
+                                <form method="post" action="{{ route('checkout.bayar') }}">
+                                    @csrf
+                                    <th colspan=""><button type="submit" class="form-control btn btn-primary">Checkout</button></th>
+                                </form>
                             </tr>
                             </tbody>
                         </table>
