@@ -14,8 +14,8 @@
                             @csrf
                             <button type="submit" class="form-control mt-2 ml-2 btn btn-danger btn-sm">Remove Cart</button>
                         </form>
-                        <a href="#"><button type="submit" class="form-control mt-2 btn btn-info btn-sm">Show Cart</button></a>
-                        <p class="mt-3 mx-2">Cart ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</p>
+                        <a href="{{ route('checkout') }}"><button type="submit" class="form-control mt-2 btn btn-info btn-sm">Show Cart & Checkout</button></a>
+                        <p class="mt-3 mx-2">Cart ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }} Barang)</p>
                         <i class="material-icons mt-3">add_shopping_cart</i>
                     </div>
                     <div class="table-responsive">
@@ -25,7 +25,7 @@
                                 <th scope="col" class="">Nama</th>
                                 <th scope="col" class="">Kategori</th>
                                 <th scope="col" class="">Harga</th>
-                                <th scope="col" class="col-sm-1"></th>
+                                <th scope="col" class="col-sm-1">Jumlah</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,7 +39,7 @@
                                             <form method="post" action="{{ route('cart.removeitem') }}">
                                                 @csrf
                                                 <input type="hidden" name="produk_id" value="{{ $produk->id }}">
-                                                <button type="submit" class="mt-1 btn btn-outline-warning btn-sm">Remove Item</button>
+                                                <button type="submit" class="form-control mt-1 btn btn-outline-warning btn-sm">Remove Item</button>
                                             </form>
                                             <form method="post" action="{{ route('cart.editquantity') }}">
                                                 @csrf
@@ -54,7 +54,7 @@
                                                 }
                                                 @endphp
                                                 <input type="number" class="form-control-sm mt-1" name="quantity" value="{{ $itemqty }}">
-                                                <button type="submit" class="mt-1 btn btn-outline-secondary btn-sm">Edit Quantity</button>
+                                                <button type="submit" class="form-control mt-1 btn btn-outline-secondary btn-sm">Edit Quantity</button>
                                             </form>
                                         @else
                                             <form method="post" action="{{ route('cart.store') }}">

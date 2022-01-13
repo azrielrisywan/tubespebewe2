@@ -30,7 +30,6 @@ class CartController extends Controller
 
     public function cartList() {
         $cartItems = Cart::content()->toArray();
-
     }
 
     public function destroy() {
@@ -64,7 +63,7 @@ class CartController extends Controller
                 Cart::update($data['rowId'], $request->quantity);
             }
         }
-        toast('Berhasil diedit!', 'success');
+        toast('Berhasil! Jumlah barang dalam cart berhasil di update', 'success');
         return redirect()->route('transaksi');
     }
 }
