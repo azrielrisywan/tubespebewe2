@@ -1,5 +1,3 @@
-
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -7,9 +5,6 @@
 
         </h2>
     </x-slot>
-
-
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -22,7 +17,7 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Kontak</th>
                                 <th scope="col">Kontrak Habis</th>
-                                <th scope="col">Waktu Kerja</th>
+                                <th scope="col">Shift</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -32,7 +27,13 @@
                                 <td>{{$karyawan->nama}}</td>
                                 <td>{{$karyawan->kontak}}</td>
                                 <td>{{$karyawan->masa_kontrak}}</td>
-                                <td>{{$karyawan->waktu_kerja}}</td>
+                                @if ($karyawan->shift_id == 1)
+                                <td>Pagi</td>
+                                @elseif($karyawan->shift_id == 2)
+                                    <td>Siang</td>
+                                @elseif($karyawan->shift_id == 3)
+                                    <td>Malam</td>                                             
+                                @endif
                                 <td><a href="{{ url('/editKaryawan/'.$karyawan->id) }}" >Edit</a>  | <a href="#" >Hapus</a></td>
                             </tr>
                             @endforeach
