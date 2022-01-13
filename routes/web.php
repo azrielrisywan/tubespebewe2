@@ -44,8 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    
-    // 
+
+    //
     Route::get('/editKaryawan/{id}', [DashboardController::class, 'editKaryawan'])->name('editKaryawan');
     Route::post('/updateKaryawan/{id}', [DashboardController::class, 'updatedata'])->name('updatedata');
 
@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/transaksi/checkout/bayar', [CheckoutController::class, 'bayar'])->name('checkout.bayar');
 
-    Route::get('/transaksi/checkout/orderdetails', [CheckoutController::class, 'orderdetails'])->name('transaksi.orderdetails');
+    Route::get('/transaksi/checkout/orderdetails', [CheckoutController::class, 'orderdetails'])->name('checkout.orderdetails');
 
 });
 

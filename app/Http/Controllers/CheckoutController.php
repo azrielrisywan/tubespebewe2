@@ -77,7 +77,7 @@ class CheckoutController extends Controller
             'created_at' => Carbon::now()->toDateTimeString(),
         ]);
 
-        return redirect()->route('transaksi.orderdetails');
+        return redirect()->route('checkout.orderdetails');
     }
 
     public function orderdetails() {
