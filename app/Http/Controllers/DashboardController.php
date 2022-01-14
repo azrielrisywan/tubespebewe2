@@ -64,36 +64,41 @@ class DashboardController extends Controller
     }
     function updatedata(Request $req,$id){
         $nama = $req->input('nama');
-        echo $nama;
         $kontak = $req->input('noHP');
         var_dump($kontak);
         $masa_kontrak = $req->input('masaKontrak');
         $waktu_kerja = $req->input('shift');
-        $update_nama = DB::table('karyawan')
-            ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
-            ->where('karyawan.id',$id)
-            ->update(
+
+        try {
+            $update_nama = DB::table('karyawan')
+                ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
+                ->where('karyawan.id', $id)
+                ->update(
                     ['karyawan.nama' => $nama],
                 );
-        $update_kontak = DB::table('karyawan')
-        ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
-        ->where('karyawan.id',$id)
-        ->update(
-                ['karyawan.kontak' => "$kontak"],
-            );
-        $update_masa_kontrak = DB::table('karyawan')
-        ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
-        ->where('karyawan.id',$id)
-        ->update(
-                ['karyawan.masa_kontrak' => $masa_kontrak],
-            );
-        DB::table('karyawan')
-        ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
-        ->where('karyawan.id',$id)
-        ->update(
-                ['shift_id' => $waktu_kerja]
-            );
-        return back();
+            $update_kontak = DB::table('karyawan')
+                ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
+                ->where('karyawan.id', $id)
+                ->update(
+                    ['karyawan.kontak' => "$kontak"],
+                );
+            $update_masa_kontrak = DB::table('karyawan')
+                ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
+                ->where('karyawan.id', $id)
+                ->update(
+                    ['karyawan.masa_kontrak' => $masa_kontrak],
+                );
+            DB::table('karyawan')
+                ->join('shift', 'karyawan.shift_id', '=', 'shift.id')
+                ->where('karyawan.id', $id)
+                ->update(
+                    ['shift_id' => $waktu_kerja]
+                );
+        } catch (Exception $e) {
+            Alert::error('Error', 'Masukkan data yang benar!');
+        }
+        Alert::success('Berhasil!', 'Data berhasil diubah');
+        return redirect()->route('dashboard');
     }
 
     public function hapusKaryawan($id) {

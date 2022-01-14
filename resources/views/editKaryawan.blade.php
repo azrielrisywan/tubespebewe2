@@ -38,7 +38,6 @@
                                 <label for="shift">Shift</label>
                                 @foreach($karyawans as $karyawan)
                                 <select class="custom-select" id="shift" name="shift">
-                                    <option selected>Choose</option>
                                     <option value="1">Pagi</option>
                                     <option value="2">Siang</option>
                                     <option value="3">Malam</option>
