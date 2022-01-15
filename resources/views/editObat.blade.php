@@ -27,7 +27,7 @@
                                 <input type="text" class="form-control" value="{{ $obat -> harga }}" id="harga" name="harga" placeholder="harga">
                                 @endforeach
                             </div>
-                        </div>        
+                        </div>
                         <div class="form-row">
                             <div class="col-md-12 mb-3">
                                 <label for="pabrikan">Pabrikan</label>
@@ -59,13 +59,13 @@
                                 @foreach($obats as $obat)
                                 <input type="date" class="form-control" value="{{ $obat -> tanggal_produksi }}" id="tanggal" name="tanggal">
                                 @endforeach
-                            </div>             
+                            </div>
                             <div class="col-md-4 mb-3">
                                 <label for="tanggal_kedaluwarsa">Tanggal Produksi</label>
                                 @foreach($obats as $obat)
                                 <input type="date" class="form-control" value="{{ $obat -> tanggal_kedaluwarsa }}" id="tanggal_kedaluwarsa" name="tanggal_kedaluwarsa">
                                 @endforeach
-                            </div>                            
+                            </div>
                         </div>
                         <button class="btn btn-primary" type="submit">Edit Data</button>
                     </form>
@@ -78,7 +78,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="table-responsive">
-                        <p class="h2">obat</p>
+                        <p class="h2">Produk</p>
                         <table class="mt-4 table table-hover">
                             <thead class="thead-dark">
                             <tr>
@@ -99,8 +99,8 @@
                                     <td>{{$obat->jumlah_stok}}</td>
                                     <td>{{$obat->kategori}}</td>
                                     <td>{{$obat->pabrikan}}</td>
-                                    <td>{{$obat->tanggal_produksi}}</td>      
-                                    <td>{{$obat->tanggal_kedaluwarsa}}</td>                                             
+                                    <td>{{$obat->tanggal_produksi}}</td>
+                                    <td>{{$obat->tanggal_kedaluwarsa}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
