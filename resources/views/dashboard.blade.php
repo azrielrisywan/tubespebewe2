@@ -27,13 +27,7 @@
                                 <td>{{$karyawan->nama}}</td>
                                 <td>{{$karyawan->kontak}}</td>
                                 <td>{{$karyawan->masa_kontrak}}</td>
-                                @if ($karyawan->shift_id == 1)
-                                <td>Pagi</td>
-                                @elseif($karyawan->shift_id == 2)
-                                    <td>Siang</td>
-                                @elseif($karyawan->shift_id == 3)
-                                    <td>Malam</td>
-                                @endif
+                                <td>{{$karyawan->waktu_kerja}}</td>
                                 <td><a href="{{ url('/editKaryawan/'.$karyawan->id) }}" >Edit</a>  | <a href="{{ url('/hapusKaryawan/'.$karyawan->id) }}" >Hapus</a></td>
                             </tr>
                             @endforeach

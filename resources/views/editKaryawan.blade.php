@@ -38,9 +38,10 @@
                                 <label for="shift">Shift</label>
                                 @foreach($karyawans as $karyawan)
                                 <select class="custom-select" id="shift" name="shift">
-                                    <option value="1">Pagi</option>
-                                    <option value="2">Siang</option>
-                                    <option value="3">Malam</option>
+                                    <option value="1">malam weekday</option>
+                                    <option value="2">siang weekday</option>
+                                    <option value="3">malam weekend</option>
+                                    <option value="4">siang weekend</option>
                                 </select>
                             @endforeach
                             </div>
@@ -73,13 +74,7 @@
                                     <td>{{$karyawan->nama}}</td>
                                     <td>{{$karyawan->kontak}}</td>
                                     <td>{{$karyawan->masa_kontrak}}</td>
-                                    @if ($karyawan->shift_id == 1)
-                                        <td>Pagi</td>
-                                    @elseif($karyawan->shift_id == 2)
-                                        <td>Siang</td>
-                                    @elseif($karyawan->shift_id == 3)
-                                        <td>Malam</td>
-                                    @endif
+                                    <td>{{$karyawan->waktu_kerja}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
