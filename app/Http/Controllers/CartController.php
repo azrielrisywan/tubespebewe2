@@ -18,6 +18,10 @@ class CartController extends Controller
                 Alert::error('Error', 'Masukkan jumlah yang benar');
                 return back();
             }
+            if ($produk->jumlah_stok < $request->quantity) {
+                Alert::error('Error', 'Jumlah stok '. $request->nama_produk .' tidak mencukupi');
+                return back();
+            }
             Cart::add(
                 $produk->id,
                 $produk->nama,

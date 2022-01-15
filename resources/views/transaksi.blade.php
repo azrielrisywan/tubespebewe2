@@ -25,6 +25,7 @@
                                 <th scope="col" class="">Nama</th>
                                 <th scope="col" class="">Kategori</th>
                                 <th scope="col" class="">Harga</th>
+                                <th scope="col" class="">Stok</th>
                                 <th scope="col" class="col-sm-1">Jumlah</th>
                             </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                     <td>{{$produk->nama}}</td>
                                     <td>{{$produk->kategori}}</td>
                                     <td>Rp {{number_format($produk->harga)}}</td>
+                                    <td>{{number_format($produk->jumlah_stok)}}</td>
                                     <td>
                                         @if ($cart->where('id', $produk->id)->count())
                                             <form method="post" action="{{ route('cart.removeitem') }}">
