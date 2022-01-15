@@ -69,7 +69,7 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <th colspan="4">Total</th>
-                                <th colspan=""><?php echo e(\Gloudemans\Shoppingcart\Facades\Cart::priceTotal()); ?></th>
+                                <th colspan="">Rp<?php echo e(\Gloudemans\Shoppingcart\Facades\Cart::priceTotal()); ?></th>
                             </tr>
                             <tr>
                                 <th colspan="4"></th>

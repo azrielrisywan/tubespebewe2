@@ -10,20 +10,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function create()
     {
-        $karyawans = \DB::table('karyawan')
-                        ->where('is_admin', '=', null)
-                        ->get()
-                        ->toArray();
+        try {
+            $karyawans = \DB::table('karyawan')
+                ->select('nama')
+                ->where('role', '=', null)
+                ->get()
+                ->toArray();
+            if ($karyawans == null) {
+                Alert::info('Info', 'Semua karyawan sudah menjadi admin!');
+                return back();
+            }
+        } catch (\Exception $e) {
+            Alert::info('Error!', $e->getMessage());
+            return back();
+        }
         return view('auth.register', compact('karyawans'));
     }
 
@@ -65,7 +76,7 @@ class RegisteredUserController extends Controller
 
         \DB::table('karyawan')
             ->where('nama', '=', $request->name)
-            ->update(['is_admin' => 'admin']);
+            ->update(['role' => 'admin']);
 
         return redirect(RouteServiceProvider::HOME);
     }

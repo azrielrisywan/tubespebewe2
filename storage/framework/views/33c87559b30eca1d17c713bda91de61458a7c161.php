@@ -54,9 +54,10 @@
                                 <label for="shift">Shift</label>
                                 <?php $__currentLoopData = $karyawans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $karyawan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <select class="custom-select" id="shift" name="shift">
-                                    <option value="1">Pagi</option>
-                                    <option value="2">Siang</option>
-                                    <option value="3">Malam</option>
+                                    <option value="1">malam weekday</option>
+                                    <option value="2">siang weekday</option>
+                                    <option value="3">malam weekend</option>
+                                    <option value="4">siang weekend</option>
                                 </select>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
@@ -89,13 +90,7 @@
                                     <td><?php echo e($karyawan->nama); ?></td>
                                     <td><?php echo e($karyawan->kontak); ?></td>
                                     <td><?php echo e($karyawan->masa_kontrak); ?></td>
-                                    <?php if($karyawan->shift_id == 1): ?>
-                                        <td>Pagi</td>
-                                    <?php elseif($karyawan->shift_id == 2): ?>
-                                        <td>Siang</td>
-                                    <?php elseif($karyawan->shift_id == 3): ?>
-                                        <td>Malam</td>
-                                    <?php endif; ?>
+                                    <td><?php echo e($karyawan->waktu_kerja); ?></td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>

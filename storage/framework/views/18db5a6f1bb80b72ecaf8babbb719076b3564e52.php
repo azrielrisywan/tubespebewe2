@@ -33,13 +33,7 @@
                                 <td><?php echo e($karyawan->nama); ?></td>
                                 <td><?php echo e($karyawan->kontak); ?></td>
                                 <td><?php echo e($karyawan->masa_kontrak); ?></td>
-                                <?php if($karyawan->shift_id == 1): ?>
-                                <td>Pagi</td>
-                                <?php elseif($karyawan->shift_id == 2): ?>
-                                    <td>Siang</td>
-                                <?php elseif($karyawan->shift_id == 3): ?>
-                                    <td>Malam</td>
-                                <?php endif; ?>
+                                <td><?php echo e($karyawan->waktu_kerja); ?></td>
                                 <td><a href="<?php echo e(url('/editKaryawan/'.$karyawan->id)); ?>" >Edit</a>  | <a href="<?php echo e(url('/hapusKaryawan/'.$karyawan->id)); ?>" >Hapus</a></td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -98,6 +92,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="table-responsive">
+                        <p class="h2">Transaksi</p>
                         <table class="table table-hover">
                             <thead class="thead-dark">
                             <tr>

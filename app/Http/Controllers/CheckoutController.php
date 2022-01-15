@@ -54,20 +54,25 @@ class CheckoutController extends Controller
     public function bayar() {
         $cart = Cart::content();
         $produks = Produk::all();
-        $cart_product_quantity = 0;
 
 
         foreach ($cart as $data) {
-            $cart_product_quantity = (int)$data->qty;
             foreach ($produks as $produk) {
-                if ($produk->jumlah_stok < $cart_product_quantity) {
-                    Alert::error('Error', 'Jumlah stok tidak mencukupi!');
-                    return back();
+                if ($produk->id == $data->id) {
+                    if ((int)$data->qty > $produk->jumlah_stok) {
+                        Alert::error('Error', 'Jumlah stok '. $data->name . ' tidak mencukupi!');
+                        return back();
+                    }
                 }
             }
         }
 
-        DB::table('produks')->decrement('jumlah_stok', $cart_product_quantity);
+        foreach ($cart as $data) {
+            DB::table('produks')
+                ->where('id', '=', $data->id)
+                ->decrement('jumlah_stok', (int)$data->qty);
+        }
+
         DB::table('orders')->insertGetId([
             'tanggal_order' => Carbon::now()->toDateTimeString(),
             'metode_pembayaran' => null,

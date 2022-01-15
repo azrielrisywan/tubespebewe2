@@ -109,7 +109,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('register'))]); ?>
-                            <?php echo e(__('Create Account')); ?>
+                            <?php echo e(__('Tambah Admin')); ?>
 
                          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -234,7 +234,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('register'))]); ?>
-                    <?php echo e(__('Create Account')); ?>
+                    <?php echo e(__('Tambah Admin')); ?>
 
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

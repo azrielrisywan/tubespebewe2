@@ -63,7 +63,7 @@
                             @endforeach
                             <tr>
                                 <th colspan="4">Total</th>
-                                <th colspan="">{{ \Gloudemans\Shoppingcart\Facades\Cart::priceTotal() }}</th>
+                                <th colspan="">Rp{{ \Gloudemans\Shoppingcart\Facades\Cart::priceTotal() }}</th>
                             </tr>
                             <tr>
                                 <th colspan="4"></th>
