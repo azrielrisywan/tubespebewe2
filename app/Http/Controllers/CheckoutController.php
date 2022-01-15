@@ -60,11 +60,9 @@ class CheckoutController extends Controller
         foreach ($cart as $data) {
             $cart_product_quantity = (int)$data->qty;
             foreach ($produks as $produk) {
-                if ($data->id == $produk->id) {
-                    if (!$produk->jumlah_stok > $cart_product_quantity) {
-                        Alert::error('Error', 'Jumlah stok tidak mencukupi!');
-                        return back();
-                    }
+                if ($produk->jumlah_stok < $cart_product_quantity) {
+                    Alert::error('Error', 'Jumlah stok tidak mencukupi!');
+                    return back();
                 }
             }
         }
